@@ -1,0 +1,70 @@
+# 系統文件
+.DS_Store
+Thumbs.db
+
+# 編輯器文件
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 依賴目錄
+node_modules/
+vendor/
+
+# 緩存文件
+*.cache
+*.log
+
+# 壓縮文件
+*.zip
+*.rar
+*.7z
+
+# 其他
+*.bak
+*.tmp
+*.temp
+
+# 編輯器和IDE文件
+*.swp
+*.swo
+.project
+.settings/
+*.tmproj
+*.esproj
+*.iml
+
+# 日誌文件
+error_log
+access_log
+
+# 備份和臨時文件
+*~
+.tmp/
+backup/
+
+# 特定於 WordPress 的文件
+/wp-admin/
+/wp-content/
+/wp-includes/
+
+# 但保留自己的外掛目錄
+!/wp-content/plugins/hk-faculty/
+
+# 編譯後的CSS/JS文件
+*.min.css
+*.min.js
+
+# 敏感數據
+.env
+config.php
+auth.json
+
+# 其他不需要納入版本控制的文件
+/tests/coverage/
+/docs/generated/
+
+# 確保文檔目錄中的文件被跟踪
+!documents/
+!documents/*.md 

@@ -1,0 +1,814 @@
+﻿/**
+ * HK Teachers 樣式表
+ * 
+ * @package HK_Teachers
+ * @author 陳富國 (Fu-Kuo Chen)
+ * @copyright 2023-2024 陳富國 (Fu-Kuo Chen)
+ * 
+ * 本檔案為專有軟體的一部分，未經授權不得複製、修改或分發
+ * This file is part of proprietary software and unauthorized copying, 
+ * modification or distribution is prohibited
+ */
+
+/* 全局色彩變數 - 以Facebook風格為基礎 */
+:root {
+  /* Facebook 色彩系統 */
+  --fb-blue: #1877f2;
+  --fb-dark-blue: #166fe5;
+  --fb-light-blue: #e7f3ff;
+  --fb-hover-blue: #e7f3ff;
+  --fb-bg: #f0f2f5;
+  --fb-text: #050505;
+  --fb-secondary-text: #65676b;
+  --fb-tertiary-text: #8a8d91;
+  --fb-divider: #ced0d4;
+  --fb-primary-button: #1877f2;
+  --fb-primary-button-hover: #166fe5;
+  --fb-card-bg: #ffffff;
+  --fb-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+  /* 原有的色彩變數保留，但不主要使用 */
+  --custom-red: #ce2724;
+  --custom-yellow: #f3ec19;
+  --custom-teal: #207c88;
+  --custom-light-gray: #aac1bf;
+  --custom-off-white: #e8e9d7;
+  --custom-dark-gray: #4c4d4f;
+}
+
+/* 引入 Google 字體 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap');
+
+/* 設定全局字體 - 使用Facebook的Segoe UI或系統UI字體 */
+body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+    font-family: 'Segoe UI', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 16px;
+    color: var(--fb-text);
+}
+
+/* Facebook風格卡片列表 */
+.teacher-list,
+.staff-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background-color: transparent;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+/* 多列顯示設定 */
+.teacher-list.teacher-columns-1 .teacher-item,
+.staff-list.staff-columns-1 .staff-item {
+    width: 100%;
+}
+
+.teacher-list.teacher-columns-2 .teacher-item,
+.staff-list.staff-columns-2 .staff-item {
+    width: calc(50% - 8px);
+}
+
+.teacher-list.teacher-columns-3 .teacher-item,
+.staff-list.staff-columns-3 .staff-item {
+    width: calc(33.333% - 11px);
+}
+
+/* 卡片項目樣式 */
+.teacher-item,
+.staff-item {
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+/* Facebook風格卡片 */
+.teacher-card-inner,
+.staff-card-inner {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: visible; /* 允許頭像區塊超出容器 */
+    height: 100%;
+    background-color: var(--fb-card-bg);
+    box-shadow: var(--fb-card-shadow);
+    border: none; /* 移除卡片整體的框線 */
+    transition: all 0.2s ease;
+}
+
+.teacher-card-inner:hover,
+.staff-card-inner:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* 縮圖樣式 */
+.teacher-thumbnail,
+.staff-thumbnail {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--fb-bg);
+    width: 60%; /* 調整為卡片寬度的60% */
+    aspect-ratio: 1; /* 保持1:1的比例 */
+    margin-bottom: 5px; /* 調整下方間距為5px */
+    z-index: 2;
+    border-radius: 50%; /* 添加圓形邊框 */
+    margin-left: auto; /* 水平置中 */
+    margin-right: auto; /* 水平置中 */
+    border: none; /* 移除框線 */
+    box-shadow: none; /* 移除陰影 */
+    outline: none; /* 移除外框 */
+}
+
+.teacher-thumbnail img,
+.staff-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    border-radius: 50%; /* 確保圖片也是圓形 */
+    border: none; /* 移除圖片框線 */
+    box-shadow: none; /* 移除圖片陰影 */
+    outline: none; /* 移除圖片外框 */
+}
+
+.teacher-item:hover .teacher-thumbnail img,
+.staff-item:hover .staff-thumbnail img {
+    transform: scale(1.03);
+    border: none; /* 確保hover時也沒有框線 */
+    box-shadow: none; /* 確保hover時也沒有陰影 */
+    outline: none; /* 確保hover時也沒有外框 */
+}
+
+/* 名片內容區域 */
+.teacher-content,
+.staff-content {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: var(--fb-card-bg);
+    margin-top: 0; /* 移除上方間距 */
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--fb-divider); /* 只為內容區塊添加框線 */
+    border-radius: 8px; /* 為內容區塊添加圓角 */
+}
+
+/* 名稱標題 */
+.teacher-name,
+.staff-name {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--fb-text);
+}
+
+.teacher-name a,
+.staff-name a {
+    text-decoration: none;
+    color: var(--fb-text);
+}
+
+.teacher-name a:hover,
+.staff-name a:hover {
+    color: var(--fb-primary-button);
+    text-decoration: none;
+}
+
+/* 教師類型標籤 */
+.teacher-type,
+.staff-type {
+    margin-bottom: 15px;
+}
+
+.teacher-type-label,
+.staff-type-label {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: var(--fb-light-blue);
+    color: var(--fb-primary-button);
+}
+
+.teacher-type-full-time .teacher-type-label {
+    background-color: var(--fb-light-blue);
+    color: var(--fb-primary-button);
+}
+
+.teacher-type-part-time .teacher-type-label {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+/* 詳細資訊列表 */
+.teacher-details-list,
+.staff-details-list {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    color: var(--fb-secondary-text);
+}
+
+.teacher-details-list > div,
+.staff-details-list > div {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--fb-divider);
+}
+
+.teacher-details-list > div:last-child,
+.staff-details-list > div:last-child {
+    border-bottom: none;
+}
+
+.teacher-details-list b,
+.staff-details-list b {
+    font-weight: 600;
+    color: var(--fb-text);
+    margin-right: 4px;
+}
+
+/* 聯絡資訊區塊 */
+.teacher-contact-info,
+.staff-contact-info {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--fb-divider);
+}
+
+/* 聯絡資訊各項目容器 */
+.teacher-contact-info > div,
+.staff-contact-info > div {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: baseline;
+    padding: 2px 0;
+}
+
+/* 電子郵件、分機和辦公室項目 */
+.teacher-email, .teacher-extension, .teacher-office,
+.staff-email, .staff-extension, .staff-office {
+    padding: 2px 0 !important;
+    margin-bottom: 6px !important;
+}
+
+/* 標籤樣式 */
+.teacher-contact-info b,
+.staff-contact-info b {
+    display: inline-block;
+    width: 110px;
+    text-align: right;
+    padding-right: 24px;
+    flex-shrink: 0;
+    font-weight: 600;
+    color: var(--fb-secondary-text);
+    font-size: 1.05rem;
+}
+
+/* 聯絡資訊值的樣式 */
+.teacher-contact-info span,
+.staff-contact-info span,
+.teacher-contact-info a,
+.staff-contact-info a {
+    flex: 1;
+    display: inline-block;
+    padding: 2px 0;
+    word-break: break-word;
+    color: var(--fb-text);
+    font-size: 1.05rem;
+}
+
+/* 連結樣式 */
+.teacher-contact-info a,
+.staff-contact-info a {
+    text-decoration: none;
+    color: var(--fb-primary-button);
+}
+
+.teacher-contact-info a:hover,
+.staff-contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* "其他"欄位特殊處理 */
+.teacher-experience,
+.staff-experience {
+    display: flex;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+.teacher-experience b,
+.staff-experience b {
+    margin-bottom: 5px;
+    text-align: left;
+    width: auto;
+    padding-right: 0;
+}
+
+.teacher-experience span,
+.staff-experience span {
+    padding-left: 0;
+    margin-top: 2px;
+}
+
+/* 詳細頁面樣式 */
+.teacher-info,
+.staff-info {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    background-color: var(--fb-card-bg);
+    border-radius: 8px;
+    box-shadow: var(--fb-card-shadow);
+    overflow: hidden;
+    border: 1px solid var(--fb-divider);
+}
+
+.teacher-title,
+.staff-title {
+    padding: 20px 24px;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--fb-text);
+    border-bottom: 1px solid var(--fb-divider);
+    background-color: var(--fb-card-bg);
+}
+
+.teacher-info-container,
+.staff-info-container {
+    display: flex;
+    padding: 24px;
+}
+
+.teacher-photo,
+.staff-photo {
+    flex: 0 0 200px;
+    margin-right: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--fb-divider);
+}
+
+.teacher-photo img,
+.staff-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.teacher-details,
+.staff-details {
+    flex: 1;
+}
+
+.teacher-details > div,
+.staff-details > div {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--fb-divider);
+    font-size: 1.1rem;
+    color: var(--fb-secondary-text);
+}
+
+.teacher-details b,
+.staff-details b {
+    font-weight: 600;
+    color: var(--fb-text);
+    margin-right: 4px;
+}
+
+/* 聯絡區塊 */
+.teacher-contact,
+.staff-contact {
+    margin-top: 20px;
+    background-color: var(--fb-light-blue);
+    border-radius: 8px;
+    padding: 16px 20px;
+}
+
+.teacher-contact h3,
+.staff-contact h3 {
+    margin: 0 0 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--fb-primary-button);
+}
+
+/* 內容區塊 */
+.teacher-content-area,
+.staff-content-area {
+    margin-top: 20px;
+    padding: 20px 24px;
+    border-top: 1px solid var(--fb-divider);
+}
+
+.teacher-content-title,
+.staff-content-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 15px;
+    color: var(--fb-text);
+}
+
+.teacher-content-body,
+.staff-content-body {
+    line-height: 1.5;
+    color: var(--fb-secondary-text);
+    font-size: 1.1rem;
+}
+
+/* 空狀態和錯誤樣式 */
+.teacher-empty,
+.staff-empty {
+    text-align: center;
+    padding: 32px 16px;
+    background-color: var(--fb-card-bg);
+    border-radius: 8px;
+    margin: 16px 0;
+    color: var(--fb-secondary-text);
+    border: 1px solid var(--fb-divider);
+    box-shadow: var(--fb-card-shadow);
+}
+
+.teacher-error,
+.staff-error {
+    text-align: center;
+    padding: 16px;
+    background-color: #fef2f2;
+    border-radius: 8px;
+    margin: 16px 0;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+/* 響應式設計 */
+@media (max-width: 992px) {
+    .teacher-list.teacher-columns-3 .teacher-item,
+    .staff-list.staff-columns-3 .staff-item {
+        width: calc(50% - 8px);
+    }
+}
+
+@media (max-width: 768px) {
+    .teacher-item,
+    .staff-item {
+        width: 100% !important;
+    }
+    
+    .teacher-info-container,
+    .staff-info-container {
+        flex-direction: column;
+    }
+    
+    .teacher-photo,
+    .staff-photo {
+        flex: 0 0 auto;
+        margin-right: 0;
+        margin-bottom: 16px;
+        max-width: 200px;
+    }
+    
+    .teacher-contact-info b,
+    .staff-contact-info b {
+        width: 100px;
+        padding-right: 12px;
+    }
+    
+    .teacher-thumbnail,
+    .staff-thumbnail {
+        width: 60%; /* 手機版時使用60%寬度 */
+        margin-bottom: -30%;
+    }
+    
+    .teacher-content,
+    .staff-content {
+        margin-top: 30%;
+    }
+}
+
+/* 單列顯示時的水平佈局 */
+@media (min-width: 769px) {
+    .teacher-list.teacher-columns-1 .teacher-card-inner,
+    .staff-list.staff-columns-1 .staff-card-inner {
+        flex-direction: row;
+    }
+    
+    .teacher-list.teacher-columns-1 .teacher-thumbnail,
+    .staff-list.staff-columns-1 .staff-thumbnail {
+        flex: 0 0 33%; /* 修改為33%寬度 */
+        width: 33%; /* 修改為33%寬度 */
+        height: auto; /* 改為自動高度 */
+        margin: 5px 0; /* 設置上下間距為5px */
+        margin-right: -16.5%; /* 調整重疊效果為寬度的一半 */
+        border-radius: 0; /* 移除圓形 */
+        aspect-ratio: auto; /* 移除1:1比例限制 */
+        background-color: var(--fb-card-bg); /* 使用與卡片相同的背景色 */
+        border: none; /* 移除框線 */
+        box-shadow: none; /* 移除陰影 */
+        outline: none; /* 移除外框 */
+    }
+    
+    .teacher-list.teacher-columns-1 .teacher-thumbnail img,
+    .staff-list.staff-columns-1 .staff-thumbnail img {
+        width: 100%;
+        height: auto; /* 改為自動高度 */
+        display: block;
+        border-radius: 0; /* 移除圖片圓形 */
+        border: none; /* 移除框線 */
+        box-shadow: none; /* 移除陰影 */
+        outline: none; /* 移除外框 */
+        object-fit: contain; /* 改為contain以保持原始比例 */
+    }
+    
+    .teacher-list.teacher-columns-1 .teacher-content,
+    .staff-list.staff-columns-1 .staff-content {
+        margin-top: 0;
+        margin-left: 19%; /* 調整內容區塊的位置為5% */
+        border-radius: 0 8px 8px 0;
+    }
+}
+
+/* Accordion UI 風格的工作職掌 */
+.accordion-container {
+    border: 1px solid var(--fb-divider);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    background-color: var(--fb-card-bg);
+}
+
+.accordion-header {
+    padding: 15px;
+    background-color: var(--fb-light-blue);
+    color: var(--fb-text);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.accordion-header:hover {
+    background-color: rgba(24, 119, 242, 0.1);
+}
+
+.accordion-header span:first-child {
+    flex: 1;
+}
+
+.accordion-icon {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--fb-primary-button);
+    transition: transform 0.3s ease;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+/* 關閉按鈕樣式 */
+.accordion-close {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--fb-secondary-text);
+    margin-left: 10px;
+    opacity: 0; /* 初始狀態隱藏 */
+    transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    width: 24px;
+    height: 24px;
+    display: none; /* 先完全不顯示 */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    visibility: hidden; /* 確保完全隱藏 */
+}
+
+/* 只在hover或active狀態下顯示關閉按鈕 */
+.accordion-container:hover .accordion-close,
+.accordion-container.active .accordion-close {
+    opacity: 0.7;
+    visibility: visible;
+    display: flex; /* 顯示為flex */
+}
+
+.accordion-close:hover {
+    opacity: 1;
+    color: var(--fb-primary-button);
+    background-color: rgba(24, 119, 242, 0.1);
+}
+
+.accordion-content {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+/* 活動狀態 - 用於hover和點擊兩種情況 */
+.accordion-container.active .accordion-content {
+    padding: 15px;
+    max-height: 1000px; /* 大致估計最大高度 */
+}
+
+.accordion-container.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+/* 固定展開狀態 - 即使鼠標離開也保持展開 */
+.accordion-container.clicked .accordion-header {
+    background-color: rgba(24, 119, 242, 0.2);
+}
+
+/* 工作職掌內容樣式 */
+.accordion-content {
+    line-height: 1.6;
+    color: var(--fb-secondary-text);
+    font-size: 1.1rem;
+    white-space: pre-line; /* 保留換行 */
+}
+
+/* 響應式設計調整 */
+@media (max-width: 768px) {
+    .accordion-header {
+        padding: 12px;
+    }
+    
+    .accordion-container.active .accordion-content {
+        padding: 12px;
+    }
+}
+
+/* 桌面版hover提示 */
+@media (min-width: 769px) {
+    .accordion-header::after {
+        content: '懸停展開';
+        position: absolute;
+        right: 80px; /* 調整位置，為關閉按鈕留出空間 */
+        font-size: 0.8rem;
+        color: var(--fb-secondary-text);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+    
+    .accordion-header:hover::after {
+        opacity: 0.7;
+    }
+    
+    .accordion-container.clicked .accordion-header::after {
+        content: '已固定展開';
+        opacity: 0.7;
+    }
+}
+
+/* 工作職掌按鈕樣式 */
+.staff-resp-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--custom-teal);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.staff-resp-btn:hover {
+    background-color: var(--custom-dark-gray);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* 模態窗口樣式 */
+.staff-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+    overflow: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.staff-modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.staff-modal-wrapper {
+    position: relative;
+    background-color: var(--custom-off-white);
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.staff-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--custom-light-gray);
+    background-color: var(--custom-teal);
+    border-radius: 8px 8px 0 0;
+}
+
+.staff-modal-title {
+    color: white;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.staff-modal-close {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.staff-modal-close:hover {
+    color: var(--custom-yellow);
+}
+
+.staff-modal-body {
+    padding: 20px;
+    background-color: var(--custom-off-white);
+    border-radius: 0 0 8px 8px;
+    overflow-y: auto;
+    max-height: calc(90vh - 60px);
+    color: var(--custom-dark-gray);
+    line-height: 1.6;
+}
+
+.staff-resp-content {
+    white-space: pre-line;
+    font-size: 15px;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .staff-modal-wrapper {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .staff-modal-body {
+        padding: 15px;
+    }
+    
+    .staff-modal-title {
+        font-size: 18px;
+    }
+    
+    .staff-resp-btn {
+        width: 100%;
+    }
+}

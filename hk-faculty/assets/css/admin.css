@@ -1,0 +1,285 @@
+/**
+ * HK Teachers 後台管理樣式
+ * 
+ * @package HK_Teachers
+ * @author 陳富國 (Fu-Kuo Chen)
+ * @copyright 2023-2024 陳富國 (Fu-Kuo Chen)
+ * 
+ * 本檔案為專有軟體的一部分，未經授權不得複製、修改或分發
+ * This file is part of proprietary software and unauthorized copying, 
+ * modification or distribution is prohibited
+ */
+
+.wp-block-hk-teachers-meta {
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #e2e4e7;
+    margin-bottom: 20px;
+}
+
+.wp-block-hk-teachers-meta label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.wp-block-hk-teachers-meta input[type="text"],
+.wp-block-hk-teachers-meta input[type="email"],
+.wp-block-hk-teachers-meta input[type="url"],
+.wp-block-hk-teachers-meta textarea,
+.wp-block-hk-teachers-meta select {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.wp-block-hk-teachers-meta .required {
+    color: #d63638;
+}
+
+.wp-block-hk-teachers-meta .error-message {
+    color: #d63638;
+    margin-top: -12px;
+    margin-bottom: 16px;
+    font-size: 12px;
+}
+
+.wp-block-hk-teachers-meta .description {
+    font-size: 12px;
+    color: #757575;
+    margin-top: -12px;
+    margin-bottom: 16px;
+}
+
+/* 教師後台列表樣式 */
+.post-type-teacher .wp-list-table .column-thumbnail {
+    width: 60px;
+}
+
+.post-type-teacher .wp-list-table .column-thumbnail img {
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+}
+
+.post-type-teacher .wp-list-table .column-title {
+    width: 18%;
+    min-width: 180px;
+}
+
+.post-type-teacher .wp-list-table .column-employment_type {
+    width: 12%;
+    min-width: 100px;
+}
+
+.post-type-teacher .wp-list-table .column-position,
+.post-type-teacher .wp-list-table .column-education,
+.post-type-teacher .wp-list-table .column-extension,
+.post-type-teacher .wp-list-table .column-office {
+    width: 10%;
+}
+
+.post-type-teacher .wp-list-table .column-expertise {
+    width: 15%;
+}
+
+.post-type-teacher .wp-list-table .column-email {
+    width: 15%;
+}
+
+.post-type-teacher .wp-list-table td {
+    vertical-align: middle;
+}
+
+/* 將功能列分成兩行顯示 */
+.post-type-teacher .row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 180px;
+}
+
+.post-type-teacher .row-actions span {
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+
+/* 複製按鈕樣式 */
+.post-type-teacher .row-actions .duplicate a {
+    color: #0073aa;
+    font-weight: 500;
+}
+
+.post-type-teacher .row-actions .duplicate a:hover {
+    color: #00a0d2;
+}
+
+/* 工作經驗欄位的彈出提示 */
+.post-type-teacher .expertise-tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.post-type-teacher .expertise-tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 999;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: normal;
+    font-weight: normal;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* 響應式調整 */
+@media screen and (max-width: 1280px) {
+    .post-type-teacher .wp-list-table .column-expertise,
+    .post-type-teacher .wp-list-table .column-education {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .post-type-teacher .wp-list-table .column-thumbnail img {
+        max-width: 40px;
+        max-height: 40px;
+    }
+}
+
+/**
+ * 教職員管理外掛後台樣式
+ * 
+ * @package HK_Faculty
+ * @author 陳富國 (Fu-Kuo Chen)
+ * @copyright 2023-2024 陳富國 (Fu-Kuo Chen)
+ */
+
+/* 後台表單樣式 */
+.form-table th {
+    width: 150px;
+}
+
+.form-table input[type="text"],
+.form-table input[type="email"],
+.form-table textarea {
+    width: 100%;
+}
+
+/* 後台列表縮略圖 */
+.column-thumbnail img {
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 教師類型標籤 */
+.teacher-type-admin-label {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.teacher-type-full-time-admin {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.teacher-type-part-time-admin {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #bbdefb;
+}
+
+/* 儀表板樣式 */
+.hkf-dashboard-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px -10px;
+}
+
+.hkf-dashboard-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 10px 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+}
+
+.hkf-dashboard-card h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.hkf-dashboard-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.hkf-dashboard-card li {
+    margin-bottom: 8px;
+}
+
+/* 設定頁面樣式 */
+.hkf-settings-wrapper {
+    margin: 20px 0;
+}
+
+.hkf-settings-section {
+    margin-bottom: 30px;
+}
+
+.hkf-settings-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.hkf-settings-card h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.hkf-settings-card code {
+    background: #f5f5f5;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+/* 響應式設計 */
+@media (max-width: 782px) {
+    .hkf-dashboard-card {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .form-table th {
+        width: 100%;
+        display: block;
+        padding-bottom: 0;
+    }
+    
+    .form-table td {
+        width: 100%;
+        display: block;
+    }
+} 
