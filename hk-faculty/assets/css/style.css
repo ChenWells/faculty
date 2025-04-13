@@ -10,22 +10,24 @@
  * modification or distribution is prohibited
  */
 
-/* 全局色彩變數 - 以Facebook風格為基礎 */
+/* 全局色彩變數 */
 :root {
-  /* Facebook 色彩系統 */
-  --fb-blue: #1877f2;
-  --fb-dark-blue: #166fe5;
-  --fb-light-blue: #e7f3ff;
-  --fb-hover-blue: #e7f3ff;
-  --fb-bg: #f0f2f5;
-  --fb-text: #050505;
-  --fb-secondary-text: #65676b;
-  --fb-tertiary-text: #8a8d91;
-  --fb-divider: #ced0d4;
-  --fb-primary-button: #1877f2;
-  --fb-primary-button-hover: #166fe5;
-  --fb-card-bg: #ffffff;
-  --fb-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  /* 主要配色方案 */
+  --primary-color: #363b4e;    /* 深藍灰 - 主色調 */
+  --secondary-color: #4f3b78;  /* 深紫色 - 次要色調 */
+  --accent-color: #927fbf;     /* 中紫色 - 強調色 */
+  --light-color: #c4bbf0;      /* 淺紫色 - 輔助色 */
+  
+  /* 介面色彩系統 */
+  --bg-color: #f8f8fa;
+  --card-bg: #ffffff;
+  --text-color: #363b4e;
+  --secondary-text: #4f3b78;
+  --tertiary-text: #6e6e6e;
+  --divider-color: #e1e2e6;
+  --button-color: #4f3b78;
+  --button-hover: #363b4e;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   
   /* 原有的色彩變數保留，但不主要使用 */
   --custom-red: #ce2724;
@@ -34,20 +36,35 @@
   --custom-light-gray: #aac1bf;
   --custom-off-white: #e8e9d7;
   --custom-dark-gray: #4c4d4f;
+  
+  /* 舊的 Facebook 色彩系統，保持向下兼容 */
+  --fb-blue: var(--secondary-color);
+  --fb-dark-blue: var(--primary-color);
+  --fb-light-blue: var(--light-color);
+  --fb-hover-blue: var(--light-color);
+  --fb-bg: var(--bg-color);
+  --fb-text: var(--text-color);
+  --fb-secondary-text: var(--secondary-text);
+  --fb-tertiary-text: var(--tertiary-text);
+  --fb-divider: var(--divider-color);
+  --fb-primary-button: var(--button-color);
+  --fb-primary-button-hover: var(--button-hover);
+  --fb-card-bg: var(--card-bg);
+  --fb-card-shadow: var(--card-shadow);
 }
 
 /* 引入 Google 字體 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap');
 
-/* 設定全局字體 - 使用Facebook的Segoe UI或系統UI字體 */
+/* 設定全局字體 */
 body, h1, h2, h3, h4, h5, h6, p, a, span, div {
     font-family: 'Segoe UI', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-size: 16px;
-    color: var(--fb-text);
+    color: var(--text-color);
 }
 
-/* Facebook風格卡片列表 */
+/* 卡片列表 */
 .teacher-list,
 .staff-list {
     display: flex;
@@ -85,7 +102,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
     box-sizing: border-box;
 }
 
-/* Facebook風格卡片 */
+/* 卡片內部 */
 .teacher-card-inner,
 .staff-card-inner {
     display: flex;
@@ -93,8 +110,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
     border-radius: 8px;
     overflow: visible; /* 允許頭像區塊超出容器 */
     height: 100%;
-    background-color: var(--fb-card-bg);
-    box-shadow: var(--fb-card-shadow);
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
     border: none; /* 移除卡片整體的框線 */
     transition: all 0.2s ease;
 }
@@ -110,7 +127,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 .staff-thumbnail {
     position: relative;
     overflow: hidden;
-    background-color: var(--fb-bg);
+    background-color: var(--bg-color);
     width: 60%; /* 調整為卡片寬度的60% */
     aspect-ratio: 1; /* 保持1:1的比例 */
     margin-bottom: 5px; /* 調整下方間距為5px */
@@ -151,11 +168,11 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
     display: flex;
     flex-direction: column;
     flex: 1;
-    background-color: var(--fb-card-bg);
+    background-color: var(--card-bg);
     margin-top: 0; /* 移除上方間距 */
     position: relative;
     z-index: 1;
-    border: 1px solid var(--fb-divider); /* 只為內容區塊添加框線 */
+    border: 1px solid var(--divider-color); /* 只為內容區塊添加框線 */
     border-radius: 8px; /* 為內容區塊添加圓角 */
 }
 
@@ -166,18 +183,18 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
     font-size: 1.5rem;
     line-height: 1.3;
     font-weight: 600;
-    color: var(--fb-text);
+    color: var(--text-color);
 }
 
 .teacher-name a,
 .staff-name a {
     text-decoration: none;
-    color: var(--fb-text);
+    color: var(--text-color);
 }
 
 .teacher-name a:hover,
 .staff-name a:hover {
-    color: var(--fb-primary-button);
+    color: var(--secondary-color);
     text-decoration: none;
 }
 
@@ -194,18 +211,18 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
     border-radius: 4px;
     font-size: 0.9rem;
     font-weight: 500;
-    background-color: var(--fb-light-blue);
-    color: var(--fb-primary-button);
+    background-color: var(--light-color);
+    color: var(--secondary-color);
 }
 
 .teacher-type-full-time .teacher-type-label {
-    background-color: var(--fb-light-blue);
-    color: var(--fb-primary-button);
+    background-color: rgba(146, 127, 191, 0.2);
+    color: var(--secondary-color);
 }
 
 .teacher-type-part-time .teacher-type-label {
-    background-color: #fef2f2;
-    color: #dc2626;
+    background-color: rgba(54, 59, 78, 0.1);
+    color: var(--primary-color);
 }
 
 /* 詳細資訊列表 */
@@ -540,17 +557,13 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 
 /* Accordion UI 風格的工作職掌 */
 .accordion-container {
-    border: 1px solid var(--fb-divider);
-    border-radius: 8px;
     margin-bottom: 15px;
-    overflow: hidden;
-    background-color: var(--fb-card-bg);
 }
 
 .accordion-header {
     padding: 15px;
-    background-color: var(--fb-light-blue);
-    color: var(--fb-text);
+    background-color: var(--light-color);
+    color: var(--text-color);
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -561,7 +574,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 }
 
 .accordion-header:hover {
-    background-color: rgba(24, 119, 242, 0.1);
+    background-color: rgba(146, 127, 191, 0.3); /* 使用 accent-color 的半透明版本 */
 }
 
 .accordion-header span:first-child {
@@ -571,7 +584,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 .accordion-icon {
     font-size: 18px;
     font-weight: bold;
-    color: var(--fb-primary-button);
+    color: var(--secondary-color);
     transition: transform 0.3s ease;
     margin-left: auto;
     display: flex;
@@ -585,7 +598,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 .accordion-close {
     font-size: 20px;
     font-weight: bold;
-    color: var(--fb-secondary-text);
+    color: var(--secondary-text);
     margin-left: 10px;
     opacity: 0; /* 初始狀態隱藏 */
     transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
@@ -609,8 +622,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 
 .accordion-close:hover {
     opacity: 1;
-    color: var(--fb-primary-button);
-    background-color: rgba(24, 119, 242, 0.1);
+    color: var(--primary-color);
+    background-color: rgba(146, 127, 191, 0.2); /* 使用 accent-color 的半透明版本 */
 }
 
 .accordion-content {
@@ -632,13 +645,13 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 
 /* 固定展開狀態 - 即使鼠標離開也保持展開 */
 .accordion-container.clicked .accordion-header {
-    background-color: rgba(24, 119, 242, 0.2);
+    background-color: rgba(146, 127, 191, 0.4); /* 使用 accent-color 的半透明版本 */
 }
 
 /* 工作職掌內容樣式 */
 .accordion-content {
     line-height: 1.6;
-    color: var(--fb-secondary-text);
+    color: var(--secondary-text);
     font-size: 1.1rem;
     white-space: pre-line; /* 保留換行 */
 }
@@ -661,7 +674,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
         position: absolute;
         right: 80px; /* 調整位置，為關閉按鈕留出空間 */
         font-size: 0.8rem;
-        color: var(--fb-secondary-text);
+        color: var(--secondary-text);
         opacity: 0;
         transition: opacity 0.2s ease;
     }
@@ -680,7 +693,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 .staff-resp-btn {
     display: inline-block;
     padding: 8px 16px;
-    background-color: var(--custom-teal);
+    background-color: var(--secondary-color);
     color: white;
     border: none;
     border-radius: 4px;
@@ -695,7 +708,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 }
 
 .staff-resp-btn:hover {
-    background-color: var(--custom-dark-gray);
+    background-color: var(--primary-color);
     transform: translateY(-2px);
     box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
@@ -708,7 +721,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(54, 59, 78, 0.7); /* 使用主色調作為透明背景 */
     z-index: 1000;
     overflow: auto;
     opacity: 0;
@@ -724,7 +737,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 
 .staff-modal-wrapper {
     position: relative;
-    background-color: var(--custom-off-white);
+    background-color: var(--card-bg);
     margin: auto;
     padding: 0;
     width: 90%;
@@ -753,8 +766,8 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 1px solid var(--custom-light-gray);
-    background-color: var(--custom-teal);
+    border-bottom: 1px solid var(--divider-color);
+    background-color: var(--secondary-color);
     border-radius: 8px 8px 0 0;
 }
 
@@ -775,16 +788,16 @@ body, h1, h2, h3, h4, h5, h6, p, a, span, div {
 }
 
 .staff-modal-close:hover {
-    color: var(--custom-yellow);
+    color: var(--light-color);
 }
 
 .staff-modal-body {
     padding: 20px;
-    background-color: var(--custom-off-white);
+    background-color: var(--card-bg);
     border-radius: 0 0 8px 8px;
     overflow-y: auto;
     max-height: calc(90vh - 60px);
-    color: var(--custom-dark-gray);
+    color: var(--text-color);
     line-height: 1.6;
 }
 
