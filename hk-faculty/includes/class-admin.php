@@ -447,6 +447,14 @@ if (!class_exists('HKFaculty\Admin')) {
                 'hkf_settings'
             );
             
+            // 添加外觀設定區塊
+            add_settings_section(
+                'hkf_appearance_section',
+                '外觀設定',
+                [$this, 'render_appearance_section'],
+                'hkf_settings'
+            );
+            
             // 註冊設定欄位
             add_settings_field(
                 'hkf_teacher_columns',
@@ -482,6 +490,16 @@ if (!class_exists('HKFaculty\Admin')) {
                 'hkf_settings',
                 'hkf_general_section',
                 ['field' => 'enable_photo_hover', 'label' => '啟用照片上的懸停放大效果']
+            );
+            
+            // 添加主題選擇欄位
+            add_settings_field(
+                'hkf_theme_mode',
+                '顯示主題模式',
+                [$this, 'render_theme_field'],
+                'hkf_settings',
+                'hkf_appearance_section',
+                []
             );
             
             // 在多站點環境中設置同步
@@ -534,6 +552,13 @@ if (!class_exists('HKFaculty\Admin')) {
         }
         
         /**
+         * 渲染外觀設定區塊說明
+         */
+        public function render_appearance_section() {
+            echo '<p>調整教職員管理外掛的外觀顯示設定。</p>';
+        }
+        
+        /**
          * 渲染欄數欄位
          */
         public function render_columns_field($args) {
@@ -557,6 +582,33 @@ if (!class_exists('HKFaculty\Admin')) {
             echo '<input type="checkbox" name="hkf_options[' . $field . ']" value="1" ' . $checked . ' />';
             echo $args['label'];
             echo '</label>';
+        }
+        
+        /**
+         * 渲染主題選擇欄位
+         */
+        public function render_theme_field() {
+            $options = get_option('hkf_options');
+            $theme = isset($options['theme_mode']) ? $options['theme_mode'] : 'light';
+            
+            echo '<div class="theme-selector">';
+            
+            // 淺色主題選項
+            echo '<label class="theme-option">';
+            echo '<input type="radio" name="hkf_options[theme_mode]" value="light" ' . checked('light', $theme, false) . ' />';
+            echo '<span class="theme-preview light-theme-preview"></span>';
+            echo '淺色模式';
+            echo '</label>';
+            
+            // 深色主題選項
+            echo '<label class="theme-option">';
+            echo '<input type="radio" name="hkf_options[theme_mode]" value="dark" ' . checked('dark', $theme, false) . ' />';
+            echo '<span class="theme-preview dark-theme-preview"></span>';
+            echo '深色模式';
+            echo '</label>';
+            
+            echo '</div>';
+            echo '<p class="description">選擇教職員資料在前台顯示的主題模式。</p>';
         }
     }
 } 

@@ -12,22 +12,54 @@
 
 /* 全局色彩變數 */
 :root {
-  /* 主要配色方案 */
-  --primary-color: #363b4e;    /* 深藍灰 - 主色調 */
-  --secondary-color: #4f3b78;  /* 深紫色 - 次要色調 */
-  --accent-color: #927fbf;     /* 中紫色 - 強調色 */
-  --light-color: #c4bbf0;      /* 淺紫色 - 輔助色 */
+  /* 淺色主題配色方案 */
+  --primary-color-light: #363b4e;    /* 深藍灰 - 主色調 */
+  --secondary-color-light: #4f3b78;  /* 深紫色 - 次要色調 */
+  --accent-color-light: #927fbf;     /* 中紫色 - 強調色 */
+  --light-color-light: #c4bbf0;      /* 淺紫色 - 輔助色 */
   
-  /* 介面色彩系統 */
-  --bg-color: #f8f8fa;
-  --card-bg: #ffffff;
-  --text-color: #363b4e;
-  --secondary-text: #4f3b78;
-  --tertiary-text: #6e6e6e;
-  --divider-color: #e1e2e6;
-  --button-color: #4f3b78;
-  --button-hover: #363b4e;
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* 深色主題配色方案 */
+  --primary-color-dark: #1c1e2a;     /* 更深的藍灰 - 主色調 */
+  --secondary-color-dark: #5e4a84;   /* 更亮的深紫色 - 次要色調 */
+  --accent-color-dark: #a595cc;      /* 更亮的中紫色 - 強調色 */
+  --light-color-dark: #d1caed;       /* 更亮的淺紫色 - 輔助色 */
+  
+  /* 淺色主題介面色彩系統 */
+  --bg-color-light: #f8f8fa;
+  --card-bg-light: #ffffff;
+  --text-color-light: #363b4e;
+  --secondary-text-light: #4f3b78;
+  --tertiary-text-light: #6e6e6e;
+  --divider-color-light: #e1e2e6;
+  --button-color-light: #4f3b78;
+  --button-hover-light: #363b4e;
+  --card-shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  /* 深色主題介面色彩系統 */
+  --bg-color-dark: #121318;
+  --card-bg-dark: #262938;
+  --text-color-dark: #e1e1e6;
+  --secondary-text-dark: #c4bbf0;
+  --tertiary-text-dark: #9d9da8;
+  --divider-color-dark: #3d425a;
+  --button-color-dark: #927fbf;
+  --button-hover-dark: #c4bbf0;
+  --card-shadow-dark: 0 1px 3px rgba(0, 0, 0, 0.4);
+  
+  /* 默認使用淺色主題 */
+  --primary-color: var(--primary-color-light);
+  --secondary-color: var(--secondary-color-light);
+  --accent-color: var(--accent-color-light);
+  --light-color: var(--light-color-light);
+  --bg-color: var(--bg-color-light);
+  --card-bg: var(--card-bg-light);
+  --text-color: var(--text-color-light);
+  --secondary-text: var(--secondary-text-light);
+  --tertiary-text: var(--tertiary-text-light);
+  --divider-color: var(--divider-color-light);
+  --button-color: var(--button-color-light);
+  --button-hover: var(--button-hover-light);
+  --card-shadow: var(--card-shadow-light);
   
   /* 原有的色彩變數保留，但不主要使用 */
   --custom-red: #ce2724;
@@ -51,6 +83,52 @@
   --fb-primary-button-hover: var(--button-hover);
   --fb-card-bg: var(--card-bg);
   --fb-card-shadow: var(--card-shadow);
+}
+
+/* 深色主題類別 */
+.theme-dark {
+  --primary-color: var(--primary-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+  --accent-color: var(--accent-color-dark);
+  --light-color: var(--light-color-dark);
+  --bg-color: var(--bg-color-dark);
+  --card-bg: var(--card-bg-dark);
+  --text-color: var(--text-color-dark);
+  --secondary-text: var(--secondary-text-dark);
+  --tertiary-text: var(--tertiary-text-dark);
+  --divider-color: var(--divider-color-dark);
+  --button-color: var(--button-color-dark);
+  --button-hover: var(--button-hover-dark);
+  --card-shadow: var(--card-shadow-dark);
+  
+  /* 更新 Facebook 色彩系統以保持向下兼容 */
+  --fb-blue: var(--secondary-color-dark);
+  --fb-dark-blue: var(--primary-color-dark);
+  --fb-light-blue: var(--light-color-dark);
+  --fb-hover-blue: var(--light-color-dark);
+  --fb-bg: var(--bg-color-dark);
+  --fb-text: var(--text-color-dark);
+  --fb-secondary-text: var(--secondary-text-dark);
+  --fb-tertiary-text: var(--tertiary-text-dark);
+  --fb-divider: var(--divider-color-dark);
+  --fb-primary-button: var(--button-color-dark);
+  --fb-primary-button-hover: var(--button-hover-dark);
+  --fb-card-bg: var(--card-bg-dark);
+  --fb-card-shadow: var(--card-shadow-dark);
+}
+
+/* 暗色模式下的一些特定調整 */
+.theme-dark .staff-resp-btn,
+.theme-dark .teacher-type-label,
+.theme-dark .staff-type-label {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.theme-dark .teacher-card-inner,
+.theme-dark .staff-card-inner,
+.theme-dark .teacher-info,
+.theme-dark .staff-info {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 /* 引入 Google 字體 */

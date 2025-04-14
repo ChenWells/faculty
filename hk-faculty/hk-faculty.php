@@ -99,6 +99,27 @@ function hkf_enqueue_styles() {
         HKF_VERSION,
         true
     );
+    
+    // 取得主題設置
+    $options = get_option('hkf_options', []);
+    $theme_mode = isset($options['theme_mode']) ? $options['theme_mode'] : 'light';
+    
+    // 傳遞設置到前端
+    wp_localize_script(
+        'hk-faculty-script',
+        'hkfSettings',
+        [
+            'themeMode' => $theme_mode
+        ]
+    );
+    
+    // 如果是暗色主題，添加相應的 body class
+    if ($theme_mode === 'dark') {
+        add_filter('body_class', function($classes) {
+            $classes[] = 'theme-dark';
+            return $classes;
+        });
+    }
 }
 
 /**

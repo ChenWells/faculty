@@ -2,6 +2,35 @@
 
 這是一個專門為弘光科技大學開發的 WordPress 外掛，用於管理學校的教師和職員資訊。
 
+## 配色方案
+
+本專案採用以下配色方案：
+
+<div style="display: flex; gap: 10px; margin: 20px 0;">
+  <div style="width: 50px; height: 50px; background: #363b4e; border-radius: 5px;"></div>
+  <div style="width: 50px; height: 50px; background: #4f3b78; border-radius: 5px;"></div>
+  <div style="width: 50px; height: 50px; background: #927fbf; border-radius: 5px;"></div>
+  <div style="width: 50px; height: 50px; background: #c4bbf0; border-radius: 5px;"></div>
+</div>
+
+- 主色調：`#363b4e`（深藍灰）
+- 次要色調：`#4f3b78`（深紫色）
+- 強調色：`#927fbf`（中紫色）
+- 輔助色：`#c4bbf0`（淺紫色）
+
+同時提供深色及淺色兩種顯示模式，可在設定頁面中進行切換：
+
+<div style="display: flex; gap: 20px; margin: 20px 0;">
+  <div style="border: 1px solid #ddd; border-radius: 5px; padding: 10px; width: 45%;">
+    <h4 style="margin-top: 0;">淺色模式</h4>
+    <div style="height: 100px; background: linear-gradient(to right, #ffffff, #f8f8fa); border-radius: 5px;"></div>
+  </div>
+  <div style="border: 1px solid #ddd; border-radius: 5px; padding: 10px; width: 45%;">
+    <h4 style="margin-top: 0;">深色模式</h4>
+    <div style="height: 100px; background: linear-gradient(to right, #262938, #121318); border-radius: 5px;"></div>
+  </div>
+</div>
+
 ## 功能特點
 
 ### 教師管理
@@ -24,6 +53,7 @@
 - 自定義排序功能
 - 自定義顯示欄位數
 - 支援短代碼嵌入
+- 支援深色/淺色主題切換
 
 ## 安裝方法
 
@@ -47,8 +77,13 @@
 3. 填寫職員相關資訊
 4. 發布即可在網站上顯示
 
+### 主題設置
+1. 在 WordPress 後台選單中點擊「教職員管理」→「設定」
+2. 在「外觀設定」區塊中選擇「淺色模式」或「深色模式」
+3. 保存設定後，前台顯示將採用所選主題
+
 ### 短代碼使用
-```
+```html
 [teacher_list] - 顯示教師列表
 [staff_list] - 顯示職員列表
 ```

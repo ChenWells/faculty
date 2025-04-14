@@ -12,19 +12,79 @@
 
 /* 配色方案 */
 :root {
-  /* 主要配色方案 */
-  --primary-color: #363b4e;    /* 深藍灰 - 主色調 */
-  --secondary-color: #4f3b78;  /* 深紫色 - 次要色調 */
-  --accent-color: #927fbf;     /* 中紫色 - 強調色 */
-  --light-color: #c4bbf0;      /* 淺紫色 - 輔助色 */
+  /* 淺色主題配色方案 */
+  --primary-color-light: #363b4e;    /* 深藍灰 - 主色調 */
+  --secondary-color-light: #4f3b78;  /* 深紫色 - 次要色調 */
+  --accent-color-light: #927fbf;     /* 中紫色 - 強調色 */
+  --light-color-light: #c4bbf0;      /* 淺紫色 - 輔助色 */
   
-  /* 介面色彩系統 */
-  --bg-color: #f8f8fa;
-  --card-bg: #ffffff;
-  --text-color: #363b4e;
-  --secondary-text: #4f3b78;
-  --tertiary-text: #6e6e6e;
-  --divider-color: #e1e2e6;
+  /* 深色主題配色方案 */
+  --primary-color-dark: #1c1e2a;     /* 更深的藍灰 - 主色調 */
+  --secondary-color-dark: #5e4a84;   /* 更亮的深紫色 - 次要色調 */
+  --accent-color-dark: #a595cc;      /* 更亮的中紫色 - 強調色 */
+  --light-color-dark: #d1caed;       /* 更亮的淺紫色 - 輔助色 */
+  
+  /* 淺色主題介面色彩系統 */
+  --bg-color-light: #f8f8fa;
+  --card-bg-light: #ffffff;
+  --text-color-light: #363b4e;
+  --secondary-text-light: #4f3b78;
+  --tertiary-text-light: #6e6e6e;
+  --divider-color-light: #e1e2e6;
+  
+  /* 深色主題介面色彩系統 */
+  --bg-color-dark: #121318;
+  --card-bg-dark: #262938;
+  --text-color-dark: #e1e1e6;
+  --secondary-text-dark: #c4bbf0;
+  --tertiary-text-dark: #9d9da8;
+  --divider-color-dark: #3d425a;
+  
+  /* 默認使用淺色主題 */
+  --primary-color: var(--primary-color-light);
+  --secondary-color: var(--secondary-color-light);
+  --accent-color: var(--accent-color-light);
+  --light-color: var(--light-color-light);
+  --bg-color: var(--bg-color-light);
+  --card-bg: var(--card-bg-light);
+  --text-color: var(--text-color-light);
+  --secondary-text: var(--secondary-text-light);
+  --tertiary-text: var(--tertiary-text-light);
+  --divider-color: var(--divider-color-light);
+}
+
+/* 主題選擇器樣式 */
+.theme-selector {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.theme-option {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.theme-option input {
+  margin-right: 5px;
+}
+
+.theme-preview {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+}
+
+.light-theme-preview {
+  background: linear-gradient(135deg, var(--primary-color-light), var(--secondary-color-light), var(--accent-color-light), var(--light-color-light));
+}
+
+.dark-theme-preview {
+  background: linear-gradient(135deg, var(--primary-color-dark), var(--secondary-color-dark), var(--accent-color-dark), var(--light-color-dark));
 }
 
 .wp-block-hk-teachers-meta {

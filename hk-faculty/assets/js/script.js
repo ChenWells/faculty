@@ -17,6 +17,17 @@ jQuery(document).ready(function($) {
     let isResizing = false; // 防止resize事件過度觸發
     let mouseLeavingTimer = null; // 追蹤滑鼠離開事件的計時器
 
+    // 處理主題設置
+    function initTheme() {
+        // 檢查是否有主題設置
+        if (typeof hkfSettings !== 'undefined' && hkfSettings.themeMode === 'dark') {
+            // 如果使用者設置了暗色主題，但頁面沒有相應的 class，添加它
+            if (!$('body').hasClass('theme-dark')) {
+                $('body').addClass('theme-dark');
+            }
+        }
+    }
+
     // 初始化accordion功能
     function initAccordion() {
         const accordionContainers = $('.accordion-container');
@@ -192,6 +203,7 @@ jQuery(document).ready(function($) {
     });
 
     // 初始化
+    initTheme();
     initAccordion();
 
     // 工作職掌模態窗口功能
